@@ -10,7 +10,7 @@
 
     <div class="py-12 px-40">
         <div class="grid grid-cols-2 gap-4">
-            <div class="mb-5 font-bold"">ตารางข้อมูลแผนก</div>
+            <div class="mb-5 font-bold">ตารางข้อมูลแผนก</div>
             <div class="">
                 <p class="mb-5 font-bold">แบบฟอร์ม</p>
 
