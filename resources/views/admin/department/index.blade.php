@@ -14,13 +14,19 @@
             <div class="">
                 <p class="mb-5 font-bold">แบบฟอร์ม</p>
 
-                <form action="" method="post">
+                <form action="{{route('addDepartment')}}" method="post">
+                    @csrf
                     <div>
                         <label for="department_name" class="">ชื่อตำแหน่งงาน</label>
                     </div>
                     <div>
                         <input type="text" class="form-control mt-5" name="department_name">
                     </div>
+                    @error('department_name')
+                    <div class="py-2">
+                        <span class="text-red-800 ">{{$message}}</span>
+                    </div>
+                    @enderror
                     <div>
                         <input type="submit" value="บันทึก" class="mt-5 p-3 w-48 bg-blue-800 text-white rounded-md">
                     </div>

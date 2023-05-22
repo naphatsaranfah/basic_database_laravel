@@ -35,3 +35,4 @@ Route::middleware([
 });
 
 Route::get('/department/all',[DepartmentController::class,'index'])->name('department');
+Route::post('/department/add',[DepartmentController::class,'store'])->name('addDepartment');
