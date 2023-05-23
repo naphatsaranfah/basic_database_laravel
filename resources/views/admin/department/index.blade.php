@@ -10,14 +10,21 @@
 
     <div class="py-12 px-40">
         <div class="grid grid-cols-2 gap-4">
-            <div class="mb-5 font-bold">ตารางข้อมูลแผนก</div>
+
+            <div class="mb-5 font-bold">
+                @if(session("success"))
+                <p>{{session('success')}}</pk>
+                    @endif
+
+                <p>ตารางข้อมูลแผนก</p>
+            </div>
             <div class="">
                 <p class="mb-5 font-bold">แบบฟอร์ม</p>
 
                 <form action="{{route('addDepartment')}}" method="post">
                     @csrf
                     <div>
-                        <label for="department_name" class="">ชื่อตำแหน่งงาน</label>
+                        <label for="department_name" class="">ชื่อแผนก</label>
                     </div>
                     <div>
                         <input type="text" class="form-control mt-5" name="department_name">
