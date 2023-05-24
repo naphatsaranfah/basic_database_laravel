@@ -12,7 +12,7 @@
         <div class="">
             <p class="mb-5 font-bold">แบบฟอร์มแก้ไข</p>
 
-            <form action="{{route('addDepartment')}}" method="post">
+            <form action="{{url('department/update/'.$department->id)}}" method="post">
                 @csrf
                 <div>
                     <label for="department_name" class="">ชื่อแผนก</label>

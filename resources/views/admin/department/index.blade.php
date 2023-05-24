@@ -41,9 +41,11 @@
                                     <th scope="col" class="px-6 py-3">
                                         Edit
                                     </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Delete
+                                    </th>
                                 </tr>
                             </thead>
-
 
                             <tbody>
                                 @foreach($departments as $row)
@@ -56,7 +58,7 @@
                                         {{$row->department_name}}
                                     </td>
                                     <td class="px-6 py-4">
-                                        {{$row->name}}
+                                        {{$row->user->name}}
                                     </td>
                                     <td class="px-6 py-4">
                                         @if($row->created_at == NULL)
@@ -66,7 +68,12 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <a href="{{url('department/edit/'.$row->id)}}" class="p-3 rounded-md text-white bg-orange-500">แก้ไข</a>
+                                        <a href="{{url('department/edit/'.$row->id)}}"
+                                            class="p-3 rounded-md text-white bg-orange-500">แก้ไข</a>
+                                    </td>
+                                    <td>
+                                        <a href="{{url('department/softdelete/'.$row->id)}}"
+                                            class="p-3 rounded-md text-white bg-red-700">ลบ</a>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -77,6 +84,77 @@
                 </div>
 
             </div>
+
+            <div class="">
+                <p class="mb-5 font-bold">ถังขยะ</p>
+
+                <div class="container mt-5">
+                    <div class="relative overflow-x-auto">
+                        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                            <thead
+                                class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3">
+                                        ลำดับ
+                                    </th>
+
+                                    <th scope="col" class="px-6 py-3">
+                                        ชื่อแผนก
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        พนักงาน
+                                        <!-- อ้างอิงตาม userID -->
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Created_At
+                                    </th>
+
+                                    <th scope="col" class="px-6 py-3">
+                                        กู้คืน
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        ลบถาวร
+                                    </th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                @foreach($trashDepartments as $row)
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        {{$trashDepartments->firstItem()+$loop->index}}
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        {{$row->department_name}}
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        {{$row->user->name}}
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        @if($row->created_at == NULL)
+                                        ไม่ถูกนิยาม
+                                        @else
+                                        {{Carbon\Carbon::parse($row->created_at)->diffForHumans()}}
+                                        @endif
+                                    </td>
+                                    <td>
+                                        <a href="{{url('department/edit/'.$row->id)}}"
+                                            class="p-3 rounded-md text-white bg-orange-500">กู้คืน</a>
+                                    </td>
+                                    <td>
+                                        <a href="{{url('department/softdelete/'.$row->id)}}"
+                                            class="p-3 rounded-md text-white bg-red-700">ลบถาวร</a>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                        {{$trashDepartments->links()}}
+                    </div>
+                </div>
+            </div>
+
             <div class="">
                 <p class="mb-5 font-bold">แบบฟอร์ม</p>
 
@@ -100,4 +178,6 @@
             </div>
         </div>
     </div>
+
+
 </x-app-layout>
