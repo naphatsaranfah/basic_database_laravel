@@ -38,6 +38,9 @@
                                     <th scope="col" class="px-6 py-3">
                                         Created_At
                                     </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Edit
+                                    </th>
                                 </tr>
                             </thead>
 
@@ -61,6 +64,9 @@
                                         @else
                                         {{Carbon\Carbon::parse($row->created_at)->diffForHumans()}}
                                         @endif
+                                    </td>
+                                    <td>
+                                        <a href="{{url('department/edit/'.$row->id)}}" class="p-3 rounded-md text-white bg-orange-500">แก้ไข</a>
                                     </td>
                                 </tr>
                                 @endforeach
