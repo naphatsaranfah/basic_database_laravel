@@ -17,6 +17,63 @@
                     @endif
 
                 <p>ตารางข้อมูลแผนก</p>
+
+
+
+                <div class="container mt-5">
+                    <div class="relative overflow-x-auto">
+                        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                            <thead
+                                class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3">
+                                        ลำดับ
+                                    </th>
+
+                                    <th scope="col" class="px-6 py-3">
+                                        ชื่อแผนก
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        UserID
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Created_At
+                                    </th>
+                                </tr>
+                            </thead>
+
+
+                            <tbody>
+                                @php($i=1)
+
+                                @foreach($departments as $row)
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        {{$i++}}
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        {{$row->department_name}}
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        {{$row->user_id}}
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        @if($row->created_at == NULL)
+                                        ไม่ถูกนิยาม
+                                        @else
+                                        {{Carbon\Carbon::parse($row->created_at)->diffForHumans()}}
+                                        @endif
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+
             </div>
             <div class="">
                 <p class="mb-5 font-bold">แบบฟอร์ม</p>
