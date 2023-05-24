@@ -73,7 +73,7 @@
                                     </td>
                                     <td>
                                         <a href="{{url('department/softdelete/'.$row->id)}}"
-                                            class="p-3 rounded-md text-white bg-red-700">ลบ</a>
+                                            class="p-3 rounded-md text-black bg-yellow-500">ลบ</a>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -82,8 +82,9 @@
                         {{$departments->links()}}
                     </div>
                 </div>
-
             </div>
+
+            @if (count($trashDepartments)>0)
 
             <div class="">
                 <p class="mb-5 font-bold">ถังขยะ</p>
@@ -143,7 +144,7 @@
                                             class="p-3 rounded-md text-white bg-orange-500">กู้คืน</a>
                                     </td>
                                     <td>
-                                        <a href="{{url('department/softdelete/'.$row->id)}}"
+                                        <a href="{{url('department/delete/'.$row->id)}}"
                                             class="p-3 rounded-md text-white bg-red-700">ลบถาวร</a>
                                     </td>
                                 </tr>
@@ -154,6 +155,8 @@
                     </div>
                 </div>
             </div>
+
+            @endif
 
             <div class="">
                 <p class="mb-5 font-bold">แบบฟอร์ม</p>
