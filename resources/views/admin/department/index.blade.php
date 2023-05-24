@@ -139,7 +139,7 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <a href="{{url('department/edit/'.$row->id)}}"
+                                        <a href="{{url('department/restore/'.$row->id)}}"
                                             class="p-3 rounded-md text-white bg-orange-500">กู้คืน</a>
                                     </td>
                                     <td>

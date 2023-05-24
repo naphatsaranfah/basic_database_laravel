@@ -47,5 +47,7 @@ Route::middleware([
 
 
     Route::get('department/softdelete/{id}',[DepartmentController::class,'softdelete']);
+    Route::get('department/restore/{id}',[DepartmentController::class,'restore']);
+
 
 });
