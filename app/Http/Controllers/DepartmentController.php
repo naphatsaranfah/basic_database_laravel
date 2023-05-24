@@ -13,7 +13,12 @@ class DepartmentController extends Controller
     public function index() {
         // $departments=DB::table('departments')->get();
         // $departments=Department::paginate(3);
-        $departments=DB::table('departments')->paginate(3);
+        // $departments=DB::table('departments')->paginate(3);
+        $departments=DB::table('departments')
+        ->join('users','departments.user_id','users.id')
+        ->select('departments.*','users.name')
+        ->paginate(5);
+
         return view('admin.department.index',compact('departments'));
     }
     //ตรวจสอบข้อมูล

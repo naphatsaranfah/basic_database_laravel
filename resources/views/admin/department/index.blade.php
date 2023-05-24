@@ -18,7 +18,6 @@
 
                 <p>ตารางข้อมูลแผนก</p>
 
-
                 <div class="container mt-5">
                     <div class="relative overflow-x-auto">
                         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -33,7 +32,8 @@
                                         ชื่อแผนก
                                     </th>
                                     <th scope="col" class="px-6 py-3">
-                                        UserID
+                                        พนักงาน
+                                        <!-- อ้างอิงตาม userID -->
                                     </th>
                                     <th scope="col" class="px-6 py-3">
                                         Created_At
@@ -43,7 +43,6 @@
 
 
                             <tbody>
-
                                 @foreach($departments as $row)
                                 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                     <th scope="row"
@@ -54,7 +53,7 @@
                                         {{$row->department_name}}
                                     </td>
                                     <td class="px-6 py-4">
-                                        {{$row->user_id}}
+                                        {{$row->name}}
                                     </td>
                                     <td class="px-6 py-4">
                                         @if($row->created_at == NULL)
