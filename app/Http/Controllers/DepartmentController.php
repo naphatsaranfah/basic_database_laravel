@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Department;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+
 
 class DepartmentController extends Controller
 {
@@ -22,12 +24,13 @@ class DepartmentController extends Controller
         'department_name.unique'=>"มีข้อมูลชื่อแผนกนี้ในฐานข้อมูลแล้ว"
     ]);
 
-        //  บันทึกข้อมูล
+        //  บันทึกข้อมูล 
+        $data = array();
+        $data["department_name"] = $request->department_name;
+        $data["user_id"] = Auth::user()->id;
 
-        $department = new Department;
-        $department->department_name = $request->department_name;
-        $department->user_id = Auth::user()->id;
-        $department->save();
+        //query builder
+        DB::table('departments')->insert($data);
         return redirect()->back()->with('success', "บันทึกข้อมูลเรียบร้อย");
     }
 
