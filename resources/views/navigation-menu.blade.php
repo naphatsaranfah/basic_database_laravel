@@ -18,7 +18,7 @@
                     <x-nav-link href="{{ route('department') }}">
                         Department
                     </x-nav-link>
-                    <x-nav-link href="{{ route('department') }}">
+                    <x-nav-link href="{{ route('services') }}">
                         Services
                     </x-nav-link>
 
