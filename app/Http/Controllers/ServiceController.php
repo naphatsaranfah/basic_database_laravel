@@ -25,8 +25,21 @@ class ServiceController extends Controller
         'service_image.required'=>"กรุณาใส่ภาพประกอบ"
     ]);
 
-        //  บันทึกข้อมูล 
-        // return redirect()->back()->with('success', "บันทึกข้อมูลเรียบร้อย");
+    //การเข้ารหัสรูปภาพ
+    $service_image = $request->file('service_image');
+
+    //Generate ชื่อภาพ
+    $name_gen =  hexdec(uniqid());
+
+
+    //ดึงนามสกุลภาพ
+
+    $img_ext = strtolower($service_image->getClientOriginalExtension());
+
+    $img_name = $name_gen.'.'.$img_ext;
+    dd($img_name);
+    //  บันทึกข้อมูล 
+        
     }
 
 }
