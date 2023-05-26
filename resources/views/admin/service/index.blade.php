@@ -23,9 +23,6 @@
                     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
-                                <th scope="col" class="px-6 py-3">
-                                    ลำดับ
-                                </th>
 
                                 <th scope="col" class="px-6 py-3">
                                     ลำดับ
@@ -57,7 +54,7 @@
                                     {{$services->firstItem()+$loop->index}}
                                 </th>
                                 <td class="px-6 py-4">
-                                    {{$row->service_image}}
+                                    <img src="{{asset($row->service_image)}}" class="w-20 h-20">
                                 </td>
                                 <td class="px-6 py-4">
                                     {{$row->service_name}}
@@ -70,12 +67,13 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <a href="{{url('department/edit/'.$row->id)}}"
+                                    <a href="{{url('service/edit/'.$row->id)}}"
                                         class="p-3 rounded-md text-white bg-orange-500">แก้ไข</a>
                                 </td>
                                 <td>
-                                    <a href="{{url('department/softdelete/'.$row->id)}}"
-                                        class="p-3 rounded-md text-black bg-yellow-500">ลบ</a>
+                                    <a href="{{url('service/delete/'.$row->id)}}"
+                                        class="p-3 rounded-md text-black bg-yellow-500"
+                                        onclick="return confirm('คุณต้องการลบข้อมมูลบริการนี้หรือไม่')">ลบ</a>
                                 </td>
                             </tr>
                             @endforeach
@@ -117,7 +115,7 @@
                 <div>
                     <input type="submit" value="บันทึก" class="mt-5 p-3 w-48 bg-blue-800 text-white rounded-md">
                 </div>
-                
+
             </form>
         </div>
     </div>
